@@ -18,6 +18,8 @@
 		73F5DEA71EF877C20017323C /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73F5DEA61EF877C20017323C /* DetailsViewController.m */; };
 		73F5DEAA1EF9A6660017323C /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73F5DEA91EF9A6660017323C /* MapViewController.m */; };
 		73F5DEAD1EF9A9460017323C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73F5DEAC1EF9A9460017323C /* MapKit.framework */; };
+		73F5DEB01EF9C4640017323C /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73F5DEAF1EF9C4640017323C /* SearchViewController.m */; };
+		73F5DEB31EF9CA0B0017323C /* NSURLSessionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 73F5DEB21EF9CA0B0017323C /* NSURLSessionModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,10 @@
 		73F5DEA81EF9A6660017323C /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		73F5DEA91EF9A6660017323C /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		73F5DEAC1EF9A9460017323C /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		73F5DEAE1EF9C4640017323C /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
+		73F5DEAF1EF9C4640017323C /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
+		73F5DEB11EF9CA0B0017323C /* NSURLSessionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSURLSessionModel.h; sourceTree = "<group>"; };
+		73F5DEB21EF9CA0B0017323C /* NSURLSessionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSURLSessionModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,13 +82,17 @@
 			children = (
 				73F5DE8B1EF85D580017323C /* AppDelegate.h */,
 				73F5DE8C1EF85D580017323C /* AppDelegate.m */,
+				73F5DE911EF85D580017323C /* Main.storyboard */,
 				73F5DE8E1EF85D580017323C /* ViewController.h */,
 				73F5DE8F1EF85D580017323C /* ViewController.m */,
-				73F5DE9F1EF8655B0017323C /* PhotoModel.h */,
-				73F5DEA01EF8655B0017323C /* PhotoModel.m */,
+				73F5DEB11EF9CA0B0017323C /* NSURLSessionModel.h */,
+				73F5DEB21EF9CA0B0017323C /* NSURLSessionModel.m */,
 				73F5DEA51EF877C20017323C /* DetailsViewController.h */,
 				73F5DEA61EF877C20017323C /* DetailsViewController.m */,
-				73F5DE911EF85D580017323C /* Main.storyboard */,
+				73F5DE9F1EF8655B0017323C /* PhotoModel.h */,
+				73F5DEA01EF8655B0017323C /* PhotoModel.m */,
+				73F5DEAE1EF9C4640017323C /* SearchViewController.h */,
+				73F5DEAF1EF9C4640017323C /* SearchViewController.m */,
 				73F5DEA81EF9A6660017323C /* MapViewController.h */,
 				73F5DEA91EF9A6660017323C /* MapViewController.m */,
 				73F5DEA21EF870600017323C /* CustomImageCell.h */,
@@ -190,9 +200,11 @@
 				73F5DE901EF85D580017323C /* ViewController.m in Sources */,
 				73F5DE8D1EF85D580017323C /* AppDelegate.m in Sources */,
 				73F5DEA11EF8655B0017323C /* PhotoModel.m in Sources */,
+				73F5DEB31EF9CA0B0017323C /* NSURLSessionModel.m in Sources */,
 				73F5DEA71EF877C20017323C /* DetailsViewController.m in Sources */,
 				73F5DE8A1EF85D580017323C /* main.m in Sources */,
 				73F5DEA41EF870600017323C /* CustomImageCell.m in Sources */,
+				73F5DEB01EF9C4640017323C /* SearchViewController.m in Sources */,
 				73F5DEAA1EF9A6660017323C /* MapViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

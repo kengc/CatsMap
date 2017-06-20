@@ -13,7 +13,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -80,16 +80,91 @@
                             <constraint firstAttribute="trailing" secondItem="YcU-xE-bzA" secondAttribute="trailing" id="Qzf-pT-s9L"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="W5k-gi-usD"/>
+                    <navigationItem key="navigationItem" id="W5k-gi-usD">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="search" id="sHb-zV-BeC">
+                            <connections>
+                                <action selector="searchAction:" destination="BYZ-38-t0r" id="1xW-XU-qrs"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="YcU-xE-bzA" id="g8I-pB-kS2"/>
                         <segue destination="37b-yp-B1b" kind="show" identifier="segue" id="pNj-7z-nZC"/>
                         <segue destination="F3j-af-Zfb" kind="show" identifier="mapSegue" id="wEx-jH-AOC"/>
+                        <segue destination="KNl-vC-uq4" kind="show" identifier="searchSegue" id="cpm-ff-FZ5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-412" y="-41.829085457271368"/>
+        </scene>
+        <!--Search View Controller-->
+        <scene sceneID="0zh-gZ-hN4">
+            <objects>
+                <viewController id="KNl-vC-uq4" customClass="SearchViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="HQV-KS-AE1"/>
+                        <viewControllerLayoutGuide type="bottom" id="hRv-gx-eWA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ngf-i5-oSO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gyK-yC-jbz">
+                                <rect key="frame" x="139" y="208" width="97" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R0s-9W-w69">
+                                <rect key="frame" x="164" y="387" width="46" height="30"/>
+                                <state key="normal" title="Done"/>
+                                <connections>
+                                    <action selector="DoneAction:" destination="KNl-vC-uq4" eventType="touchUpInside" id="zEL-FW-Abt"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search Tag" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f2D-o8-4rd">
+                                <rect key="frame" x="144" y="174" width="86" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s8E-iC-EfA">
+                                <rect key="frame" x="163" y="68" width="51" height="31"/>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Use your location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PZm-Zb-6lF">
+                                <rect key="frame" x="120" y="39" width="134" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="f2D-o8-4rd" secondAttribute="trailing" constant="129" id="6Po-cU-0dV"/>
+                            <constraint firstItem="PZm-Zb-6lF" firstAttribute="leading" secondItem="ngf-i5-oSO" secondAttribute="leadingMargin" constant="104" id="AYy-CS-om1"/>
+                            <constraint firstItem="R0s-9W-w69" firstAttribute="leading" secondItem="ngf-i5-oSO" secondAttribute="leadingMargin" constant="148" id="B3N-UM-GAx"/>
+                            <constraint firstItem="f2D-o8-4rd" firstAttribute="leading" secondItem="ngf-i5-oSO" secondAttribute="leadingMargin" constant="128" id="En0-lH-Wei"/>
+                            <constraint firstItem="R0s-9W-w69" firstAttribute="top" secondItem="gyK-yC-jbz" secondAttribute="bottom" constant="149" id="FXT-Hv-vBA"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="R0s-9W-w69" secondAttribute="trailing" constant="149" id="N9w-CE-qIV"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="s8E-iC-EfA" secondAttribute="trailing" constant="147" id="W2V-o2-1fh"/>
+                            <constraint firstItem="PZm-Zb-6lF" firstAttribute="top" secondItem="HQV-KS-AE1" secondAttribute="bottom" constant="19" id="fSz-NT-7Yt"/>
+                            <constraint firstItem="f2D-o8-4rd" firstAttribute="top" secondItem="HQV-KS-AE1" secondAttribute="bottom" constant="154" id="gZ9-EH-8Ip"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="gyK-yC-jbz" secondAttribute="trailing" constant="123" id="gs9-kO-XbW"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="PZm-Zb-6lF" secondAttribute="trailing" constant="105" id="neP-9F-6RU"/>
+                            <constraint firstItem="gyK-yC-jbz" firstAttribute="leading" secondItem="ngf-i5-oSO" secondAttribute="leadingMargin" constant="123" id="qbI-1X-euO"/>
+                            <constraint firstItem="s8E-iC-EfA" firstAttribute="leading" secondItem="ngf-i5-oSO" secondAttribute="leadingMargin" constant="147" id="tBt-sF-dAK"/>
+                            <constraint firstItem="s8E-iC-EfA" firstAttribute="top" secondItem="PZm-Zb-6lF" secondAttribute="bottom" constant="8" id="yof-0E-p3V"/>
+                            <constraint firstItem="gyK-yC-jbz" firstAttribute="top" secondItem="f2D-o8-4rd" secondAttribute="bottom" constant="13" id="zRL-ea-SMX"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="searchTagText" destination="gyK-yC-jbz" id="uO0-OQ-fGV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="igA-LQ-4Gq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-412" y="-698"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="pZ9-5G-WCi">
@@ -121,7 +196,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z4Z-UR-qGT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="420" y="-501.49925037481262"/>
+            <point key="canvasLocation" x="399" y="-699"/>
         </scene>
         <!--Details View Controller-->
         <scene sceneID="fKJ-HM-RNv">
@@ -163,14 +238,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ep-mV-k8v">
-                                <rect key="frame" x="164" y="563" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Done"/>
-                                <connections>
-                                    <action selector="ButtonAction:" destination="37b-yp-B1b" eventType="touchUpInside" id="g8r-v7-KA3"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>

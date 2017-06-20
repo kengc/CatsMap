@@ -9,15 +9,15 @@
 #import <UIKit/UIKit.h>
 @class CustomImageCell;
 
-@protocol CustomImageCellProtocol <NSObject>
-
--(void)collectionCellDidTap:(CustomImageCell *)cell;
-
-@end
+//@protocol CustomImageCellProtocol <NSObject>
+//
+//-(void)collectionCellDidTap:(CustomImageCell *)cell;
+//
+//@end
 
 @interface CustomImageCell : UICollectionViewCell
 
-@property (weak, nonatomic) id<CustomImageCellProtocol> delegate;
+//@property (weak, nonatomic) id<CustomImageCellProtocol> delegate;
 
 @property (strong, nonatomic) IBOutlet UIImageView *imageViewCell;
 

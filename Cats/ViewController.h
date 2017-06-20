@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "CustomImageCell.h"
 
-@interface ViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource, CustomImageCellProtocol>
+@interface ViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource>
 
 
 @end

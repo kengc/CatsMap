@@ -11,6 +11,7 @@
 #import "CustomImageCell.h"
 #import "DetailsViewController.h"
 #import "MapViewController.h"
+#import "NSURLSessionModel.h"
 
 
 
@@ -28,80 +29,83 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+
     
-    
-    //Make the GET request using NSURLSession
-    //Request all photos tagged with cats using an NSURLSession.
-    //Use a JSON Parser to convert/deserialize the JSON string into an NSDictionary.
     self.photos = [[NSMutableArray alloc] init];
     
+    NSString *defaultTag = @"cat";
     
-//    NSURL *url = [NSURL URLWithString:@"https://api.flickr.com/services/rest/?method=flickr.photos.search&accuracy=1&bbox=-180,-90,180,90&%20format=json&nojsoncallback=1&api_key=28602178605addc1a7730e3c90733b22&tags=cat"];
-    
-    
-    NSURL *url = [NSURL URLWithString:@"https://api.flickr.com/services/rest/?method=flickr.photos.search&has_geo=1&%20format=json&nojsoncallback=1&api_key=28602178605addc1a7730e3c90733b22&tags=cat"];
+    [NSURLSessionModel setNSURLSessionTag:self.photos tag:defaultTag andCollectionView:self.collectionView];
     
     
-    NSURLRequest *urlRequest = [[NSURLRequest alloc] initWithURL:url];
+    ///START////
     
-    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
+//    NSURL *url = [NSURL URLWithString:@"https://api.flickr.com/services/rest/?method=flickr.photos.search&has_geo=1&%20format=json&nojsoncallback=1&api_key=28602178605addc1a7730e3c90733b22&tags=cat"];
+//    
+//    
+//    NSURLRequest *urlRequest = [[NSURLRequest alloc] initWithURL:url];
+//    
+//    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+//    NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
+//    
+//    
+//    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:urlRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+//
+//        if(error){
+//            NSLog(@"error: %@", error.localizedDescription);
+//            return;
+//        }
+//        
+//        NSError *jsonError = nil;
+//        NSDictionary *flickr = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
+//        
+//        if(jsonError){
+//            NSLog(@"jsonError: %@", jsonError.localizedDescription);
+//            return;
+//        }
+//        //https://farm{farm-id}.staticflickr.com/{server-id}/{id}_{secret}.jpg
+//        //https://farm1.staticflickr.com/582/22992326269_b6c8fdff52.jpg
+//        //@"farm"
+//        //@"server"
+//        //@"id" + @"secret"
+//        
+//        NSDictionary *photos = flickr[@"photos"][@"photo"];
+//        
+//        for(NSDictionary *photo in photos){
+//            NSLog(@"photoURL: %@", photo[@"farm"]);
+//            //NSDictionary *photo = photo[@"name"];
+//            
+//            NSString *photoURLString = [NSString stringWithFormat:@"https://farm%@.staticflickr.com/%@/%@_%@.jpg", photo[@"farm"], photo[@"server"], photo[@"id"], photo[@"secret"]];
+//            
+//            NSString *imageTitle = photo[@"title"];
+//            
+//            NSURL *photoURL = [NSURL URLWithString:photoURLString];
+//            
+//            NSNumber *imageId = photo[@"id"];
+//            
+//            PhotoModel *photoObject = [[PhotoModel alloc] initWithImageURL:photoURL name:imageTitle andImageId:imageId];
+//            
+//            [self.photos addObject:photoObject];
+//        
+//        }
+//        
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            [self.collectionView reloadData];
+//        });
+//        
+//    }];
+//    [dataTask resume];
     
-    
-    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:urlRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-
-        if(error){
-            NSLog(@"error: %@", error.localizedDescription);
-            return;
-        }
-        
-        NSError *jsonError = nil;
-        NSDictionary *flickr = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
-        
-        if(jsonError){
-            NSLog(@"jsonError: %@", jsonError.localizedDescription);
-            return;
-        }
-        //https://farm{farm-id}.staticflickr.com/{server-id}/{id}_{secret}.jpg
-        //https://farm1.staticflickr.com/582/22992326269_b6c8fdff52.jpg
-        //@"farm"
-        //@"server"
-        //@"id" + @"secret"
-        
-        NSDictionary *photos = flickr[@"photos"][@"photo"];
-        
-        for(NSDictionary *photo in photos){
-            NSLog(@"photoURL: %@", photo[@"farm"]);
-            //NSDictionary *photo = photo[@"name"];
-            
-            NSString *photoURLString = [NSString stringWithFormat:@"https://farm%@.staticflickr.com/%@/%@_%@.jpg", photo[@"farm"], photo[@"server"], photo[@"id"], photo[@"secret"]];
-            
-            NSString *imageTitle = photo[@"title"];
-            
-            NSURL *photoURL = [NSURL URLWithString:photoURLString];
-            
-            NSNumber *imageId = photo[@"id"];
-            
-            PhotoModel *photoObject = [[PhotoModel alloc] initWithImageURL:photoURL name:imageTitle andImageId:imageId];
-            
-            [self.photos addObject:photoObject];
-        
-        }
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.collectionView reloadData];
-        });
-        
-    }];
-    [dataTask resume];
+    ////end////
 
     //https://api.flickr.com/services/rest/?method=flickr.photos.search&format=json&nojsoncallback=1&api_key=28602178605addc1a7730e3c90733b22&tags=cat
     
     //https://farm{farm-id}.staticflickr.com/{server-id}/{id}_{secret}.jpg
     //https://farm1.staticflickr.com/582/22992326269_b6c8fdff52.jpg
     
-    
-    
+//    dispatch_async(dispatch_get_main_queue(), ^{
+//        [self.collectionView reloadData];
+//       });
 }
 
 
@@ -130,7 +134,7 @@
     
     //Add a UIImage property to the Photo object to store the image once it's downloaded. Use this property to check if the image has already been downloaded and use it if it has.
     
-    cell.delegate = self;
+    //cell.delegate = self;
     
     if(photoObject.image == nil){
         NSData *data = [NSData dataWithContentsOfURL:photoObject.imageURL];
@@ -185,6 +189,8 @@
 //    [self performSegueWithIdentifier:@"segue" sender:self];
 //}
 
+- (IBAction)searchAction:(UIBarButtonItem *)sender {
+}
 
 
 @end

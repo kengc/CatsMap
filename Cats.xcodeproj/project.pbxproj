@@ -16,6 +16,8 @@
 		73F5DEA11EF8655B0017323C /* PhotoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 73F5DEA01EF8655B0017323C /* PhotoModel.m */; };
 		73F5DEA41EF870600017323C /* CustomImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 73F5DEA31EF870600017323C /* CustomImageCell.m */; };
 		73F5DEA71EF877C20017323C /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73F5DEA61EF877C20017323C /* DetailsViewController.m */; };
+		73F5DEAA1EF9A6660017323C /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73F5DEA91EF9A6660017323C /* MapViewController.m */; };
+		73F5DEAD1EF9A9460017323C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73F5DEAC1EF9A9460017323C /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +37,9 @@
 		73F5DEA31EF870600017323C /* CustomImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomImageCell.m; sourceTree = "<group>"; };
 		73F5DEA51EF877C20017323C /* DetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
 		73F5DEA61EF877C20017323C /* DetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
+		73F5DEA81EF9A6660017323C /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		73F5DEA91EF9A6660017323C /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		73F5DEAC1EF9A9460017323C /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73F5DEAD1EF9A9460017323C /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,6 +59,7 @@
 			children = (
 				73F5DE871EF85D580017323C /* Cats */,
 				73F5DE861EF85D580017323C /* Products */,
+				73F5DEAB1EF9A9460017323C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -76,6 +83,8 @@
 				73F5DEA51EF877C20017323C /* DetailsViewController.h */,
 				73F5DEA61EF877C20017323C /* DetailsViewController.m */,
 				73F5DE911EF85D580017323C /* Main.storyboard */,
+				73F5DEA81EF9A6660017323C /* MapViewController.h */,
+				73F5DEA91EF9A6660017323C /* MapViewController.m */,
 				73F5DEA21EF870600017323C /* CustomImageCell.h */,
 				73F5DEA31EF870600017323C /* CustomImageCell.m */,
 				73F5DE941EF85D580017323C /* Assets.xcassets */,
@@ -92,6 +101,14 @@
 				73F5DE891EF85D580017323C /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		73F5DEAB1EF9A9460017323C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				73F5DEAC1EF9A9460017323C /* MapKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -126,6 +143,11 @@
 					73F5DE841EF85D580017323C = {
 						CreatedOnToolsVersion = 8.3.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -171,6 +193,7 @@
 				73F5DEA71EF877C20017323C /* DetailsViewController.m in Sources */,
 				73F5DE8A1EF85D580017323C /* main.m in Sources */,
 				73F5DEA41EF870600017323C /* CustomImageCell.m in Sources */,
+				73F5DEAA1EF9A6660017323C /* MapViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,6 +350,7 @@
 				73F5DE9E1EF85D580017323C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

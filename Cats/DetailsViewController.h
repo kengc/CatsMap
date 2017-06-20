@@ -13,6 +13,7 @@
 @property (strong, nonatomic) IBOutlet UIImageView *imageViewDetail;
 @property (strong, nonatomic) IBOutlet UILabel *imageNameLabel;
 @property (strong, nonatomic) IBOutlet UILabel *numberOfViewDetail;
+@property (strong, nonatomic) IBOutlet UILabel *locationLabel;
 
 @property (strong, nonatomic) PhotoModel *photoObject;
 

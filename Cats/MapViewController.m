@@ -1,65 +1,50 @@
 //
-//  DetailsViewController.m
+//  MapViewController.m
 //  Cats
 //
-//  Created by Kevin Cleathero on 2017-06-19.
+//  Created by Kevin Cleathero on 2017-06-20.
 //  Copyright © 2017 Kevin Cleathero. All rights reserved.
 //
 
-#import "DetailsViewController.h"
+#import "MapViewController.h"
 
-
-@interface DetailsViewController ()
-
--(void)fetchAdditionalImageInfo;
-
+@interface MapViewController () <MKMapViewDelegate>
 
 @end
 
-@implementation DetailsViewController
-
-
-
+@implementation MapViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
     // Update the view. TWICE to be safe
     [self configureView];
     [self fetchAdditionalImageInfo];
+    
+    self.mapView.delegate =self;
+    
 }
 
 - (void)setDetailItem:(PhotoModel *)newDetailItem {
     //if (self.detailItem != newDetailItem) {
     _photoObject = newDetailItem;
     
-    
     // Update the view. TWICE to be safe
     [self configureView];
     [self fetchAdditionalImageInfo];
-    //}
+    
 }
-
 
 - (void)configureView {
     // Update the user interface for the detail item.
     if (self.photoObject) {
         
-        [self.imageViewDetail setImage:self.photoObject.image];
-        //self.imageViewDetail.image = self.detailItem.imageCell;
-        //self.imageViewDetail.image = [self.detailItem imageCell];
+        //[self.imageViewDetail setImage:self.photoObject.image];
+   
         
-        self.imageNameLabel.text = self.photoObject.name;
-        //self.textViewDetail.text = [self.detailItem imgDescription ];
-        
+        //self.imageNameLabel.text = self.photoObject.name;
+
     }
-}
-
-
-- (IBAction)ButtonAction:(UIButton *)sender {
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(void)fetchAdditionalImageInfo{
@@ -93,13 +78,27 @@
         }
         
         //have to dig two levels deep photos is just one level, must go to "photo" to get the actual images
-        NSNumber *views = flickr[@"photo"][@"views"];
-        NSString *locationDescription = flickr[@"photo"][@"owner"][@"location"];
-       
+        //NSNumber *views = flickr[@"photo"][@"views"];
+        
+        //NSDictionary *location = flickr[@"photo"][@"location"];
+        NSNumber *lat = flickr[@"photo"][@"location"][@"latitude"];
+        NSNumber *log = flickr[@"photo"][@"location"][@"longitude"];
+        
+        NSLog(@"lat %@", lat);
+        NSLog(@"long %@", log);
+        
+    
+        
         dispatch_async(dispatch_get_main_queue(), ^{
-             self.locationLabel.text = [NSString stringWithFormat:@"Location: %@", locationDescription];
-             self.numberOfViewDetail.text = [NSString stringWithFormat:@"Number of views: %@", views];
-
+            self.photoObject.coordinate = CLLocationCoordinate2DMake([lat doubleValue], [log doubleValue]);
+            
+            MKCoordinateSpan span = MKCoordinateSpanMake(.5f, .5f);
+            self.mapView.region = MKCoordinateRegionMake(self.photoObject.coordinate, span);
+            
+            PhotoModel *annotation = [[PhotoModel alloc] initWithCoordinate:self.photoObject.coordinate];
+            
+            [self.mapView addAnnotation:annotation];
+            
         });
         
     }];

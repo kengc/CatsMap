@@ -13,20 +13,20 @@
 -(void)awakeFromNib{
     [super awakeFromNib];
     
-    UITapGestureRecognizer *TapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTap:)];
-    
-    [self addGestureRecognizer:TapGesture];
+//    UITapGestureRecognizer *TapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTap:)];
+//    
+//    [self addGestureRecognizer:TapGesture];
 }
--(void)viewTap:(UITapGestureRecognizer *)sender{
-    NSLog(@"tapped");
-    
-    //can delegate to get more info
-    [self.delegate collectionCellDidTap:self];
-    
-    
-    //[self performSegueWithIdentifier:@"segue" sender:self];
-    
-}
+//-(void)viewTap:(UITapGestureRecognizer *)sender{
+//    NSLog(@"tapped");
+//    
+//    //can delegate to get more info
+//    [self.delegate collectionCellDidTap:self];
+//    
+//    
+//    //[self performSegueWithIdentifier:@"segue" sender:self];
+//    
+//}
 
 
 @end

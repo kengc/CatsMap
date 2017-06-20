@@ -10,6 +10,8 @@
 #import "PhotoModel.h"
 #import "CustomImageCell.h"
 #import "DetailsViewController.h"
+#import "MapViewController.h"
+
 
 
 
@@ -33,7 +35,13 @@
     //Use a JSON Parser to convert/deserialize the JSON string into an NSDictionary.
     self.photos = [[NSMutableArray alloc] init];
     
-    NSURL *url = [NSURL URLWithString:@"https://api.flickr.com/services/rest/?method=flickr.photos.search&format=json&nojsoncallback=1&api_key=28602178605addc1a7730e3c90733b22&tags=cat"];
+    
+//    NSURL *url = [NSURL URLWithString:@"https://api.flickr.com/services/rest/?method=flickr.photos.search&accuracy=1&bbox=-180,-90,180,90&%20format=json&nojsoncallback=1&api_key=28602178605addc1a7730e3c90733b22&tags=cat"];
+    
+    
+    NSURL *url = [NSURL URLWithString:@"https://api.flickr.com/services/rest/?method=flickr.photos.search&has_geo=1&%20format=json&nojsoncallback=1&api_key=28602178605addc1a7730e3c90733b22&tags=cat"];
+    
+    
     NSURLRequest *urlRequest = [[NSURLRequest alloc] initWithURL:url];
     
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
@@ -142,7 +150,10 @@
     return cell;
 }
 
-
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    self.indexPath = indexPath;
+    [self performSegueWithIdentifier:@"segue" sender:self];
+}
 
 #pragma mark - Navigation
 
@@ -156,14 +167,23 @@
         DetailsViewController *controller = [segue destinationViewController];
         [controller setDetailItem:photoObject];
     }
+    if([segue.identifier isEqualToString:@"mapSegue"]){
+        PhotoModel *photoObject = [self.photos objectAtIndex:self.indexPath.row];
+        MapViewController *controller = [segue destinationViewController];
+        [controller setDetailItem:photoObject];
+    }
+}
+
+#pragma Mark - Map button Navigation
+- (IBAction)mapAction:(UIButton *)sender {
+      [self performSegueWithIdentifier: @"mapSegue" sender: self];
 }
 
 
-
--(void)collectionCellDidTap:(CustomImageCell *)cell{
-    self.indexPath = [self.collectionView indexPathForCell:cell];
-    [self performSegueWithIdentifier:@"segue" sender:self];
-}
+//-(void)collectionCellDidTap:(CustomImageCell *)cell{
+//    self.indexPath = [self.collectionView indexPathForCell:cell];
+//    [self performSegueWithIdentifier:@"segue" sender:self];
+//}
 
 
 

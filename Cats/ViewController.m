@@ -72,7 +72,9 @@
             
             NSURL *photoURL = [NSURL URLWithString:photoURLString];
             
-            PhotoModel *photoObject = [[PhotoModel alloc] initWithImageURL:photoURL andName:imageTitle];
+            NSNumber *imageId = photo[@"id"];
+            
+            PhotoModel *photoObject = [[PhotoModel alloc] initWithImageURL:photoURL name:imageTitle andImageId:imageId];
             
             [self.photos addObject:photoObject];
         

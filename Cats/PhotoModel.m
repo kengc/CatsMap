@@ -11,14 +11,14 @@
 
 @implementation PhotoModel
 
-- (instancetype)initWithImageURL:(NSURL *)imageurl andName:(NSString *)name
+- (instancetype)initWithImageURL:(NSURL *)imageurl name:(NSString *)name andImageId:(NSNumber *)imageId
 {
     self = [super init];
     if (self) {
         _imageURL = imageurl;
         _name = name;
+        _imageId = imageId;
     }
     return self;
 }
-
 @end

@@ -14,7 +14,9 @@
 @property (nonatomic) UIImage *image;
 @property (nonatomic) NSURL *imageURL;
 @property (nonatomic) NSString *name;
+@property (nonatomic) NSString *views;
+@property (nonatomic) NSNumber *imageId;
 
-- (instancetype)initWithImageURL:(NSURL *)imageurl andName:(NSString *)name;
+- (instancetype)initWithImageURL:(NSURL *)imageurl name:(NSString *)name andImageId:(NSNumber *)imageId;
 
 @end

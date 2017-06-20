@@ -11,6 +11,9 @@
 
 @interface DetailsViewController ()
 
+-(void)fetchAdditionalImageInfo;
+
+
 @end
 
 @implementation DetailsViewController
@@ -24,6 +27,7 @@
     
     // Update the view. TWICE to be safe
     [self configureView];
+    [self fetchAdditionalImageInfo];
 }
 
 - (void)setDetailItem:(PhotoModel *)newDetailItem {
@@ -33,6 +37,7 @@
     
     // Update the view. TWICE to be safe
     [self configureView];
+    [self fetchAdditionalImageInfo];
     //}
 }
 
@@ -57,6 +62,48 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+-(void)fetchAdditionalImageInfo{
+    
+    //PhotoModel *photoObject = [self.photos objectAtIndex:self.indexPath.row];
+    NSNumber *imageId = self.photoObject.imageId;
+    
+    NSString *photoDetailURL = [NSString stringWithFormat:@"https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&photo_id=%@&format=json&nojsoncallback=1&api_key=28602178605addc1a7730e3c90733b22&tags=cat", imageId];
+    
+    
+    NSURL *url = [NSURL URLWithString:photoDetailURL];
+    NSURLRequest *urlRequest = [[NSURLRequest alloc] initWithURL:url];
+    
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
+    
+    
+    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:urlRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        
+        if(error){
+            NSLog(@"error: %@", error.localizedDescription);
+            return;
+        }
+        
+        NSError *jsonError = nil;
+        NSDictionary *flickr = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
+        
+        if(jsonError){
+            NSLog(@"jsonError: %@", jsonError.localizedDescription);
+            return;
+        }
+        
+        //have to dig two levels deep photos is just one level, must go to "photo" to get the actual images
+        NSNumber *views = flickr[@"photo"][@"views"];
+       
+        dispatch_async(dispatch_get_main_queue(), ^{
+             self.numberOfViewDetail.text = [NSString stringWithFormat:@"Number of views: %@", views];
+
+        });
+        
+    }];
+    [dataTask resume];
+    
+}
 
 /*
 #pragma mark - Navigation

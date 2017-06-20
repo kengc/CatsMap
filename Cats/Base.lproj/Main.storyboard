@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -116,10 +117,19 @@
                                     <action selector="ButtonAction:" destination="37b-yp-B1b" eventType="touchUpInside" id="g8r-v7-KA3"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Views" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XAx-yZ-Gvz">
+                                <rect key="frame" x="68" y="467" width="236" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="XAx-yZ-Gvz" secondAttribute="trailing" constant="55" id="2OT-He-KkW"/>
                             <constraint firstAttribute="trailing" secondItem="6SL-zp-wZX" secondAttribute="trailing" id="BGO-CI-h8l"/>
+                            <constraint firstItem="XAx-yZ-Gvz" firstAttribute="leading" secondItem="APt-j0-EoW" secondAttribute="leadingMargin" constant="52" id="Gtg-Sv-xhk"/>
+                            <constraint firstItem="XAx-yZ-Gvz" firstAttribute="top" secondItem="AwM-Ht-9g8" secondAttribute="bottom" constant="44" id="Phr-AQ-3g9"/>
                             <constraint firstItem="6SL-zp-wZX" firstAttribute="top" secondItem="APt-j0-EoW" secondAttribute="top" id="QRd-sd-zhb"/>
                             <constraint firstItem="6SL-zp-wZX" firstAttribute="leading" secondItem="APt-j0-EoW" secondAttribute="leading" id="eBH-Xi-h7M"/>
                             <constraint firstItem="AwM-Ht-9g8" firstAttribute="top" secondItem="6SL-zp-wZX" secondAttribute="bottom" constant="27" id="wOG-pS-8G8"/>
@@ -129,11 +139,12 @@
                     <connections>
                         <outlet property="imageNameLabel" destination="AwM-Ht-9g8" id="vBV-UO-D9H"/>
                         <outlet property="imageViewDetail" destination="6SL-zp-wZX" id="fUr-av-n9M"/>
+                        <outlet property="numberOfViewDetail" destination="XAx-yZ-Gvz" id="7nM-sg-yYn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kgd-KH-RZY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-503" y="-42"/>
+            <point key="canvasLocation" x="-503.19999999999999" y="-42.728635682158924"/>
         </scene>
     </scenes>
 </document>

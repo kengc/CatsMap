@@ -16,6 +16,7 @@
 
 
 
+
 @interface ViewController ()
 
 @property (nonatomic) NSMutableArray *photos;
@@ -36,76 +37,7 @@
     NSString *defaultTag = @"cat";
     
     [NSURLSessionModel setNSURLSessionTag:self.photos tag:defaultTag andCollectionView:self.collectionView];
-    
-    
-    ///START////
-    
-//    NSURL *url = [NSURL URLWithString:@"https://api.flickr.com/services/rest/?method=flickr.photos.search&has_geo=1&%20format=json&nojsoncallback=1&api_key=28602178605addc1a7730e3c90733b22&tags=cat"];
-//    
-//    
-//    NSURLRequest *urlRequest = [[NSURLRequest alloc] initWithURL:url];
-//    
-//    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-//    NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
-//    
-//    
-//    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:urlRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-//
-//        if(error){
-//            NSLog(@"error: %@", error.localizedDescription);
-//            return;
-//        }
-//        
-//        NSError *jsonError = nil;
-//        NSDictionary *flickr = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
-//        
-//        if(jsonError){
-//            NSLog(@"jsonError: %@", jsonError.localizedDescription);
-//            return;
-//        }
-//        //https://farm{farm-id}.staticflickr.com/{server-id}/{id}_{secret}.jpg
-//        //https://farm1.staticflickr.com/582/22992326269_b6c8fdff52.jpg
-//        //@"farm"
-//        //@"server"
-//        //@"id" + @"secret"
-//        
-//        NSDictionary *photos = flickr[@"photos"][@"photo"];
-//        
-//        for(NSDictionary *photo in photos){
-//            NSLog(@"photoURL: %@", photo[@"farm"]);
-//            //NSDictionary *photo = photo[@"name"];
-//            
-//            NSString *photoURLString = [NSString stringWithFormat:@"https://farm%@.staticflickr.com/%@/%@_%@.jpg", photo[@"farm"], photo[@"server"], photo[@"id"], photo[@"secret"]];
-//            
-//            NSString *imageTitle = photo[@"title"];
-//            
-//            NSURL *photoURL = [NSURL URLWithString:photoURLString];
-//            
-//            NSNumber *imageId = photo[@"id"];
-//            
-//            PhotoModel *photoObject = [[PhotoModel alloc] initWithImageURL:photoURL name:imageTitle andImageId:imageId];
-//            
-//            [self.photos addObject:photoObject];
-//        
-//        }
-//        
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            [self.collectionView reloadData];
-//        });
-//        
-//    }];
-//    [dataTask resume];
-    
-    ////end////
 
-    //https://api.flickr.com/services/rest/?method=flickr.photos.search&format=json&nojsoncallback=1&api_key=28602178605addc1a7730e3c90733b22&tags=cat
-    
-    //https://farm{farm-id}.staticflickr.com/{server-id}/{id}_{secret}.jpg
-    //https://farm1.staticflickr.com/582/22992326269_b6c8fdff52.jpg
-    
-//    dispatch_async(dispatch_get_main_queue(), ^{
-//        [self.collectionView reloadData];
-//       });
 }
 
 
@@ -176,6 +108,13 @@
         MapViewController *controller = [segue destinationViewController];
         [controller setDetailItem:photoObject];
     }
+    
+    if([segue.identifier isEqualToString:@"searchSegue"]){
+        PhotoModel *photoObject = [self.photos objectAtIndex:self.indexPath.row];
+        SearchViewController *controller = [segue destinationViewController];
+        controller.delegate = self;
+        [controller setDetailItem:photoObject];
+    }
 }
 
 #pragma Mark - Map button Navigation
@@ -190,7 +129,15 @@
 //}
 
 - (IBAction)searchAction:(UIBarButtonItem *)sender {
+    [self performSegueWithIdentifier: @"searchSegue" sender: self];
 }
 
+-(void)setNewSearchTag:(NSString *)tag{
+    [NSURLSessionModel setNSURLSessionTag:self.photos tag:tag andCollectionView:self.collectionView];
+}
+
+-(void)setNewSearchTag:(NSString *)tag andlocation:(CLLocation *)location{
+    [NSURLSessionModel setNSURLSessionTag:self.photos tag:tag location:location andCollectionView:self.collectionView];
+}
 
 @end

@@ -10,7 +10,8 @@
 
 @interface SearchViewController ()
 
-
+@property (nonatomic, strong) CLLocationManager *locationManager;
+@property (nonatomic, strong) CLLocation *currentLocation;
 
 
 @end
@@ -19,16 +20,69 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    //self.locationManager.allowsBackgroundLocationUpdates = YES;
+    [self.locationManager requestWhenInUseAuthorization];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)setDetailItem:(PhotoModel *)newDetailItem {
+    //if (self.detailItem != newDetailItem) {
+    _photoObject = newDetailItem;
+    
 }
 
-- (IBAction)DoneAction:(UIButton *)sender {
-    //segue back with tag info
+
+- (IBAction)SaveAction:(UIButton *)sender {
+    if(self.swtichControll.enabled == YES){
+       [self.delegate setNewSearchTag:self.searchTagText.text andlocation:self.currentLocation];
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    } else {
+    
+       [self.delegate setNewSearchTag:self.searchTagText.text];
+       [self.navigationController popToRootViewControllerAnimated:YES];
+    }
+}
+
+
+- (IBAction)swichAction:(UISwitch *)sender {
+    if(self.swtichControll.enabled == YES){
+        if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedWhenInUse) {
+            [self.locationManager requestLocation];
+        } else {
+            // Send the user to settings to enable location authorization
+        }
+    }
+}
+
+#pragma mark - CLLocationManagerDelegate
+
+- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
+    if (status == kCLAuthorizationStatusAuthorizedWhenInUse) {
+        NSLog(@"kCLAuthorizationStatusAuthorizedWhenInUse");
+    } else if (status == kCLAuthorizationStatusAuthorizedAlways) {
+        NSLog(@"kCLAuthorizationStatusAuthorizedAlways");
+    } else if (status == kCLAuthorizationStatusDenied) {
+        NSLog(@"kCLAuthorizationStatusDenied");
+    }
+}
+
+
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
+    
+    if (!self.currentLocation) {
+        self.currentLocation = locations[0];
+        
+        NSLog(@"location: %@", locations[0]);
+        
+        //[self performSegueWithIdentifier:@"show-map" sender:self];
+    }
+}
+
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
+    NSLog(@"Error getting the location updates: %@", error.localizedDescription);
 }
 
 

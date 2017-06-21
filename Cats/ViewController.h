@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "CustomImageCell.h"
+#import "SearchViewController.h"
 
-@interface ViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource>
+@interface ViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource, SearchViewControllerProtocol>
 
 
 @end

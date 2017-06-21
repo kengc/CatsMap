@@ -13,4 +13,6 @@
 
 +(void)setNSURLSessionTag:(NSMutableArray *)photoArray tag:(NSString *)tag andCollectionView:(UICollectionView *)collectionView;
 
++(void)setNSURLSessionTag:(NSMutableArray *)photoArray tag:(NSString *)tag location:(CLLocation *)location andCollectionView:(UICollectionView *)collectionView;
+
 @end

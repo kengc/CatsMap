@@ -26,17 +26,17 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="lAt-ku-Izo">
-                                    <size key="itemSize" width="349" height="105"/>
+                                    <size key="itemSize" width="370" height="105"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="08H-k7-MDj" customClass="CustomImageCell">
-                                        <rect key="frame" x="13" y="0.0" width="349" height="105"/>
+                                        <rect key="frame" x="2.5" y="0.0" width="370" height="105"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="349" height="105"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="370" height="105"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nno-Dh-TId">
@@ -111,29 +111,32 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gyK-yC-jbz">
-                                <rect key="frame" x="139" y="208" width="97" height="30"/>
+                                <rect key="frame" x="139" y="252" width="97" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R0s-9W-w69">
-                                <rect key="frame" x="164" y="387" width="46" height="30"/>
-                                <state key="normal" title="Done"/>
+                                <rect key="frame" x="163" y="431" width="48" height="30"/>
+                                <state key="normal" title="Search"/>
                                 <connections>
-                                    <action selector="DoneAction:" destination="KNl-vC-uq4" eventType="touchUpInside" id="zEL-FW-Abt"/>
+                                    <action selector="SaveAction:" destination="KNl-vC-uq4" eventType="touchUpInside" id="eUK-Fs-Nt4"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search Tag" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f2D-o8-4rd">
-                                <rect key="frame" x="144" y="174" width="86" height="21"/>
+                                <rect key="frame" x="144" y="218" width="86" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s8E-iC-EfA">
-                                <rect key="frame" x="163" y="68" width="51" height="31"/>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="s8E-iC-EfA">
+                                <rect key="frame" x="163" y="112" width="51" height="31"/>
+                                <connections>
+                                    <action selector="swichAction:" destination="KNl-vC-uq4" eventType="valueChanged" id="Res-Cw-cbI"/>
+                                </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Use your location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PZm-Zb-6lF">
-                                <rect key="frame" x="120" y="39" width="134" height="21"/>
+                                <rect key="frame" x="120" y="83" width="134" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -143,10 +146,10 @@
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="f2D-o8-4rd" secondAttribute="trailing" constant="129" id="6Po-cU-0dV"/>
                             <constraint firstItem="PZm-Zb-6lF" firstAttribute="leading" secondItem="ngf-i5-oSO" secondAttribute="leadingMargin" constant="104" id="AYy-CS-om1"/>
-                            <constraint firstItem="R0s-9W-w69" firstAttribute="leading" secondItem="ngf-i5-oSO" secondAttribute="leadingMargin" constant="148" id="B3N-UM-GAx"/>
+                            <constraint firstItem="R0s-9W-w69" firstAttribute="leading" secondItem="ngf-i5-oSO" secondAttribute="leadingMargin" constant="147" id="B3N-UM-GAx"/>
                             <constraint firstItem="f2D-o8-4rd" firstAttribute="leading" secondItem="ngf-i5-oSO" secondAttribute="leadingMargin" constant="128" id="En0-lH-Wei"/>
                             <constraint firstItem="R0s-9W-w69" firstAttribute="top" secondItem="gyK-yC-jbz" secondAttribute="bottom" constant="149" id="FXT-Hv-vBA"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="R0s-9W-w69" secondAttribute="trailing" constant="149" id="N9w-CE-qIV"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="R0s-9W-w69" secondAttribute="trailing" constant="148" id="N9w-CE-qIV"/>
                             <constraint firstAttribute="trailingMargin" secondItem="s8E-iC-EfA" secondAttribute="trailing" constant="147" id="W2V-o2-1fh"/>
                             <constraint firstItem="PZm-Zb-6lF" firstAttribute="top" secondItem="HQV-KS-AE1" secondAttribute="bottom" constant="19" id="fSz-NT-7Yt"/>
                             <constraint firstItem="f2D-o8-4rd" firstAttribute="top" secondItem="HQV-KS-AE1" secondAttribute="bottom" constant="154" id="gZ9-EH-8Ip"/>
@@ -160,11 +163,12 @@
                     </view>
                     <connections>
                         <outlet property="searchTagText" destination="gyK-yC-jbz" id="uO0-OQ-fGV"/>
+                        <outlet property="swtichControll" destination="s8E-iC-EfA" id="GeZ-Sh-cT2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="igA-LQ-4Gq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-412" y="-698"/>
+            <point key="canvasLocation" x="-158" y="-707"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="pZ9-5G-WCi">
@@ -196,7 +200,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z4Z-UR-qGT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="399" y="-699"/>
+            <point key="canvasLocation" x="591" y="-547"/>
         </scene>
         <!--Details View Controller-->
         <scene sceneID="fKJ-HM-RNv">

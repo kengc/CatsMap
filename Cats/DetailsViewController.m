@@ -45,14 +45,9 @@
 - (void)configureView {
     // Update the user interface for the detail item.
     if (self.photoObject) {
-        
+
         [self.imageViewDetail setImage:self.photoObject.image];
-        //self.imageViewDetail.image = self.detailItem.imageCell;
-        //self.imageViewDetail.image = [self.detailItem imageCell];
-        
         self.imageNameLabel.text = self.photoObject.name;
-        //self.textViewDetail.text = [self.detailItem imgDescription ];
-        
     }
 }
 
@@ -67,7 +62,9 @@
     //PhotoModel *photoObject = [self.photos objectAtIndex:self.indexPath.row];
     NSNumber *imageId = self.photoObject.imageId;
     
-    NSString *photoDetailURL = [NSString stringWithFormat:@"https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&photo_id=%@&format=json&nojsoncallback=1&api_key=28602178605addc1a7730e3c90733b22&tags=cat", imageId];
+    
+    
+    NSString *photoDetailURL = [NSString stringWithFormat:@"https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&photo_id=%@&format=json&nojsoncallback=1&api_key=28602178605addc1a7730e3c90733b22&tags=%@", imageId, self.photoObject.tag];
     
     
     NSURL *url = [NSURL URLWithString:photoDetailURL];

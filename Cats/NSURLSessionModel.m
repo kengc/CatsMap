@@ -71,7 +71,7 @@
             NSNumber *imageId = photo[@"id"];
             
             PhotoModel *photoObject = [[PhotoModel alloc] initWithImageURL:photoURL name:imageTitle andImageId:imageId];
-            
+            photoObject.tag = tag;
             [photoArray addObject:photoObject];
             
         }
@@ -147,7 +147,7 @@
             NSNumber *imageId = photo[@"id"];
             
             PhotoModel *photoObject = [[PhotoModel alloc] initWithImageURL:photoURL name:imageTitle andImageId:imageId];
-            
+            photoObject.tag = tag;
             [photoArray addObject:photoObject];
             
         }

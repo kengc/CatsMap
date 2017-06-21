@@ -72,6 +72,7 @@
         UIImage *result = [UIImage imageWithData:data];
         cell.imageViewCell.image = result;
         photoObject.image = result;
+        cell.imageViewLabel.text = photoObject.name;
     } else{
         cell.imageViewCell.image = photoObject.image;
         cell.imageViewLabel.text = photoObject.name;

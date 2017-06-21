@@ -18,6 +18,7 @@
 @property (nonatomic) NSString *name;
 @property (nonatomic) NSString *views;
 @property (nonatomic) NSNumber *imageId;
+@property (nonatomic) NSString *tag;
 //@property (nonatomic) CLLocation *imagelocation;
 @property (nonatomic) CLLocationCoordinate2D coordinate;
 

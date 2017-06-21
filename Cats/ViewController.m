@@ -34,10 +34,9 @@
     
     self.photos = [[NSMutableArray alloc] init];
     
-    NSString *defaultTag = @"cat";
-    
-    [NSURLSessionModel setNSURLSessionTag:self.photos tag:defaultTag andCollectionView:self.collectionView];
-
+    //NSString *defaultTag = @"cat";
+    //[NSURLSessionModel setNSURLSessionTag:self.photos tag:defaultTag andCollectionView:self.collectionView];
+    [self performSegueWithIdentifier: @"searchSegue" sender: self];
 }
 
 
@@ -110,10 +109,10 @@
     }
     
     if([segue.identifier isEqualToString:@"searchSegue"]){
-        PhotoModel *photoObject = [self.photos objectAtIndex:self.indexPath.row];
+        //PhotoModel *photoObject = [self.photos objectAtIndex:self.indexPath.row];
         SearchViewController *controller = [segue destinationViewController];
         controller.delegate = self;
-        [controller setDetailItem:photoObject];
+        //[controller setDetailItem:photoObject];
     }
 }
 

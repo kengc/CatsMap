@@ -35,11 +35,11 @@
 
 
 - (IBAction)SaveAction:(UIButton *)sender {
-    if(self.swtichControll.enabled == YES){
+
+    if(self.swtichControll.on){
        [self.delegate setNewSearchTag:self.searchTagText.text andlocation:self.currentLocation];
         [self.navigationController popToRootViewControllerAnimated:YES];
     } else {
-    
        [self.delegate setNewSearchTag:self.searchTagText.text];
        [self.navigationController popToRootViewControllerAnimated:YES];
     }
